@@ -25,7 +25,7 @@ async function putObject(username: string, filename: string, contentType: string
 export async function POST(request: NextRequest) {
   //console.log("Rental post creation API called");
   try {
-    const { username, rentalName, caption, place, rentalImage } = await request.json();
+    const { username, rentalName, caption, place, rentalImage, website, contact, area, } = await request.json();
     //console.log(`Received data: username=${username}, rentalName=${rentalName}, place=${place}`);
 
     await dbConnect();
@@ -53,6 +53,9 @@ export async function POST(request: NextRequest) {
       caption,
       place,
       rentalImage: objectURL,
+      website,
+      contact,
+      area,
     });
 
     //console.log("Saving rental to database");

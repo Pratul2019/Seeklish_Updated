@@ -1,3 +1,8 @@
+import { IconType } from "react-icons";
+import { HiHomeModern } from "react-icons/hi2";
+import { MdAppShortcut } from "react-icons/md";
+import { SiWpexplorer } from "react-icons/si";
+
 export interface User {
   name: string;
   image: string;
@@ -13,7 +18,6 @@ export interface User {
   connectpostapplication: [];
   isdeleteuserrequest: boolean;
 }
-
 
 export interface App {
   _id: string;
@@ -49,11 +53,14 @@ export interface Discover {
   image: string;
   createdAt: string;
   updatedAt: string;
+  website: string;
+  contact: string;
+  area: string;
   like: [];
   comment: [];
   connectionpost: {
     _id: string;
-    username:string;
+    username: string;
     image: string;
     caption: string;
     name: string;
@@ -74,20 +81,22 @@ export interface Rental {
   image: string;
   createdAt: string;
   updatedAt: string;
+  website: string;
+  contact: string;
+  area: string;
   like: [];
   comment: [];
   connectionpost: {
     _id: string;
     image: string;
     caption: string;
-    username:string;
+    username: string;
     name: string;
     rentalName: string;
     rentalImage: string;
     createdAt: string;
   }[];
 }
-
 
 export interface SearchUserResult {
   name: string;
@@ -125,7 +134,6 @@ export interface SearchDiscoverResult {
   comment: [];
   connectionpost: [];
 }
-
 
 export interface DiscoverResult {
   _id: string;
@@ -170,3 +178,15 @@ export interface RentalResult {
     rentalImage: string;
   }[];
 }
+
+export interface NavigationItem {
+  href: string;
+  Icon: IconType;
+  label: string;
+}
+
+export const navigationItems: NavigationItem[] = [
+  { href: "/discover", Icon: SiWpexplorer, label: "Discover" },
+  { href: "/rental", Icon: HiHomeModern, label: "Rental" },
+  { href: "/application", Icon: MdAppShortcut, label: "Application" },
+];

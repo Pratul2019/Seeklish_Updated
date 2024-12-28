@@ -1,4 +1,5 @@
-import { generateUsername } from "@/Components/Username/generateUsername";
+
+import { generateUsername } from "@/components/Username/generateUsername";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/Modals/User";
 import { NextRequest, NextResponse } from "next/server";

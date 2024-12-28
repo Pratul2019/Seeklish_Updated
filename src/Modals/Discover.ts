@@ -81,6 +81,15 @@ const schema = new Schema(
       type: String,
       required: true,
     },
+    website:{
+      type:String,
+    },
+    contact:{
+      type:Number,
+    },
+    area:{
+      type:String,
+    },
     like: {
       type: Array,
       default: [],

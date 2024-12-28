@@ -1,21 +1,21 @@
-"use client";
+
 
 import { login } from "@/actions/auth";
-import React from "react";
+import { Button } from "@/components/ui/button";
 import { FaFacebook } from "react-icons/fa";
 
-const Loginfacebook = () => {
+const LoginFacebook = () => {
   return (
-    <div className="w-full p-2 flex justify-center">
-      <div
-        onClick={() => login("facebook")}
-        className="flex gap-2 cursor-pointer p-2 rounded-3xl items-center"
-      >
-        <FaFacebook size={32} className="text-blue-500" />
-        Facebook
-      </div>
-    </div>
+    <Button
+      onClick={() => login("facebook")}
+      variant="outline"
+      size="long"
+      className="rounded-xl hover:bg-accent"
+    >
+      <FaFacebook className="text-blue-500" />
+      <span>Continue with Facebook</span>
+    </Button>
   );
 };
 
-export default Loginfacebook;
+export default LoginFacebook;
