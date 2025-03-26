@@ -108,7 +108,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             <Button variant="secondary">
               <Share postUrl={postUrl} />
             </Button>
-            <Button variant="secondary">Edit</Button>
+            {/* <Button variant="secondary">Edit</Button> */}
             {isCurrentUser && (
               <Button
                 variant="destructive"

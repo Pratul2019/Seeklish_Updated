@@ -3,38 +3,35 @@ import axios from 'axios';
 import { Fragment } from "react";
 import Discoverui from "./DiscoverUi";
 import type { Discover } from '@/components/types';
+import ErrorComponent from './error';
 
 async function getDiscovers(): Promise<Discover[]> {
-  try {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/Fetch/Discoverfetch`, {
-      headers: {
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache',
-        'Expires': '0',
-      },
-    });
+  const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/Fetch/Discoverfetch`);
 
-    if (!response.data || !Array.isArray(response.data)) {
-      throw new Error('Failed to fetch data or data is not an array');
-    }
-
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching discovers:", error);
-    return [];
+  if (!response.data || !response.data.discovers || !Array.isArray(response.data.discovers)) {
+    throw new Error('Failed to fetch data or data format is incorrect');
   }
+
+  return response.data.discovers;
 }
 
 export default async function Discover() {
-  const discovers = await getDiscovers();
+  try {
+    const discovers = await getDiscovers();
 
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:p-4 md:mx-4 mt-20 md:mt-0">
-      {discovers.map((discover: Discover) => (
-        <Fragment key={discover._id}>
-          <Discoverui discover={discover} />
-        </Fragment>
-      ))}
-    </div>
-  );
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:p-4 md:mx-4 mt-20 md:mt-0">
+        {discovers.map((discover: Discover) => (
+          <Fragment key={discover._id}>
+            <Discoverui discover={discover} />
+          </Fragment>
+        ))}
+      </div>
+    );
+  } catch (error) {
+    return <ErrorComponent 
+      error={error instanceof Error ? error : new Error('An unknown error occurred')} 
+      reset={() => window.location.reload()} 
+    />;
+  }
 }

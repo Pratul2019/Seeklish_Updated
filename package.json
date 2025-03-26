@@ -30,7 +30,7 @@
     "lucide-react": "^0.453.0",
     "mongodb": "^6.9.0",
     "mongoose": "^8.6.2",
-    "next": "15.0.0",
+    "next": "^15.2.4",
     "next-auth": "^5.0.0-beta.20",
     "node": "20.9",
     "react": "^18",
