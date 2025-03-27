@@ -1,5 +1,6 @@
 
-import RestoreUserForm from "@/Components/Authentication/RestoreUserForm";
+
+import RestoreUserForm from "@/components/Authentication/RestoreUserForm";
 import Link from "next/link";
 
 
